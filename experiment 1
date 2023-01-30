@@ -1,0 +1,84 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cstudent           |
+| cstudents          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| student            |
+| students           |
+| sys                |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use cstudents;
+Database changed
+mysql> create table cstudents(regno int(3),name varchar(15),gender varchar(1),dob date,mobileno int(10),city varchar(15));
+Query OK, 0 rows affected, 2 warnings (0.02 sec)
+
+mysql> desc cstudents;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| regno    | int         | YES  |     | NULL    |       |
+| name     | varchar(15) | YES  |     | NULL    |       |
+| gender   | varchar(1)  | YES  |     | NULL    |       |
+| dob      | date        | YES  |     | NULL    |       |
+| mobileno | int         | YES  |     | NULL    |       |
+| city     | varchar(15) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> alter table cstudents
+    -> ADD department varchar(25);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table cstudents
+    -> DROP COLUMN city;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc cstudents;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| regno      | int         | YES  |     | NULL    |       |
+| name       | varchar(15) | YES  |     | NULL    |       |
+| gender     | varchar(1)  | YES  |     | NULL    |       |
+| dob        | date        | YES  |     | NULL    |       |
+| mobileno   | int         | YES  |     | NULL    |       |
+| department | varchar(25) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> TRUNCATE table cstudents;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> SELECT * from cstudents;
+Empty set (0.00 sec)
+
+mysql> desc cstudents;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| regno      | int         | YES  |     | NULL    |       |
+| name       | varchar(15) | YES  |     | NULL    |       |
+| gender     | varchar(1)  | YES  |     | NULL    |       |
+| dob        | date        | YES  |     | NULL    |       |
+| mobileno   | int         | YES  |     | NULL    |       |
+| department | varchar(25) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+mysql> insert into cstudents values('01','termi','F','2003-09-25','9161904','cse');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * from cstudents;
++-------+---------+--------+------------+----------+------------+
+| regno | name    | gender | dob        | mobileno | department |
++-------+---------+--------+------------+----------+------------+
+|   01  | Termi   | F      | 2003-09-25 |  9161904 | cse        |
++-------+---------+--------+------------+----------+------------+
+1 row in set (0.00 sec)
